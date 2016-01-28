@@ -1,10 +1,14 @@
 {
   "name": "mandrill-webhook-request-validator",
   "version": "0.1.0",
-  "description": "Node Module that validates that the request is a valid incoming mandril request. It does not authenticate the request.",
+  "description": "Node Module that validates that the request is a valid incoming Mandrill request. It does not authenticate the request.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec"
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec",
+    "lint": "./node_modules/jshint/bin/jshint --reporter ./node_modules/jshint-md-reporter/lib/reporter.js src > docs/jshint.md",
+    "jscs": "./node_modules/jscs/bin/jscs --reporter ./node_modules/jscs-md-reporter src > docs/jscs.md",
+    "jsdoc": "./node_modules/jsdoc-to-markdown/bin/cli.js 'src/**/*.js' > docs/api.md",
+    "docs": "mkdir -p docs && npm run -s jsdoc && npm run -s lint && npm run -s jscs"
   },
   "repository": {
     "type": "git",
@@ -25,9 +29,14 @@
   },
   "devDependencies": {
     "mocha": "~2.3.4",
-    "chai": "~3.4.1",    
+    "chai": "~3.4.1",
     "sinon": "~1.17.2",
     "sinon-chai": "~2.8.0",
-    "istanbul": "~0.4.2"
+    "istanbul": "~0.4.2",
+    "jscs": "2.8.0",
+    "jshint": "2.9.1",
+    "jscs-md-reporter": "^0.1.6",
+    "jsdoc-to-markdown": "^1.3.3",
+    "jshint-md-reporter": "0.1.0"
   }
 }
