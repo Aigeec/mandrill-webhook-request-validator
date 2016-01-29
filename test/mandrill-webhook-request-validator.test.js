@@ -42,7 +42,7 @@
 
     });
 
-    describe('it should only accept POST request', function() {
+    describe('it should only call next for POST requests', function() {
 
       var res = getMockedResult();
 
@@ -65,6 +65,15 @@
         expect(nextSpy.calledOnce).to.be.true;
       });
 
+    });
+
+    it('it should return 200 for HEAD requests', function() {
+      var res = getMockedResult();
+      var nextSpy = sinon.spy();
+      var headers = {};
+      requestValidator(config)({ method: 'HEAD', url: 'http://example.com', headers: headers }, res, nextSpy);
+      expect(res.writeHead.getCall(0).args[0]).to.equal(200);
+      expect(res.end.getCall(0).args[0]).to.equal('Ok');
     });
 
     describe('it only accepts request for the correct content-type', function() {
