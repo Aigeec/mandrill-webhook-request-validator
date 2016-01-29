@@ -1,6 +1,6 @@
 {
   "name": "mandrill-webhook-request-validator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node Module that validates that the request is a valid incoming Mandrill request. It does not authenticate the request.",
   "main": "index.js",
   "scripts": {
